@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halal Bihalal & Syukuran - Aditama Racing & SCM Jreez Racing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-navy-dark { background-color: #0a192f; }
+        .text-gold { color: #d4af37; }
+        .border-gold { border-color: #d4af37; }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.2), rgba(10, 25, 47, 0.9));
+        }
+
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Envelope / Cover Overlay */
+        #invitation-cover {
+            transition: transform 1s ease-in-out, opacity 0.8s ease-in-out;
+        }
+        .cover-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="overflow-hidden"> <!-- Hidden overflow initially for cover -->
+
+    <!-- Envelope / Cover Section -->
+    <div id="invitation-cover" class="fixed inset-0 z-[100] flex items-center justify-center bg-navy-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="https://lh3.googleusercontent.com/d/17xxjzdCn2HAd9jjvGSianotAgfUS328c" alt="Cover Image" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-navy-dark/60"></div>
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <p class="text-gold tracking-[0.3em] uppercase mb-4 text-xs">Undangan Eksklusif</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-2">HALAL BIHALAL <br> & SYUKURAN</h2>
+            <p class="text-slate-300 mb-12 italic">Aditama Racing & SCM Jreez Racing</p>
+            
+            <button onclick="openInvitation()" class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-navy-dark transition-all duration-200 bg-gold font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-xl hover:bg-yellow-500">
+                <i class="fas fa-envelope-open-text mr-2 animate-bounce"></i>
+                Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- Audio Background -->
+    <div id="audio-control" class="fixed bottom-5 right-5 z-50 bg-navy-dark p-3 rounded-full border border-gold cursor-pointer shadow-lg hidden">
+        <i id="music-icon" class="fas fa-music text-gold"></i>
+    </div>
+
+    <!-- Main Content (Hidden until opened) -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <header class="relative min-h-[70vh] md:h-screen w-full flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://lh3.googleusercontent.com/d/17xxjzdCn2HAd9jjvGSianotAgfUS328c" alt="Hero Background" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 hero-overlay"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-4 pt-20 md:pt-0 fade-in" id="hero-content">
+                <p class="text-gold tracking-[0.3em] uppercase mb-4 text-xs md:text-base">The Celebration of</p>
+                <h1 class="text-3xl md:text-7xl font-bold mb-4 leading-tight">
+                    HALAL BIHALAL <br> & SYUKURAN TIM
+                </h1>
+                <h2 class="text-lg md:text-2xl font-light tracking-widest text-slate-300">
+                    ADITAMA RACING & SCM JREEZ RACING
+                </h2>
+                <div class="mt-8 md:mt-12 animate-bounce">
+                    <i class="fas fa-chevron-down text-gold text-2xl"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Opening Section -->
+        <section class="py-20 px-6 bg-navy-dark relative overflow-hidden">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <img src="https://www.svgrepo.com/show/475143/bismillah.svg" alt="Bismillah" class="w-48 mx-auto invert mb-8 opacity-80">
+                <p class="text-lg italic leading-relaxed text-slate-300 mb-8">
+                    "Dengan mengharap ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara Halal Bihalal & Syukuran Tim Balap kami, sebagai ajang mempererat tali silaturahmi dan rasa syukur atas kebersamaan kita."
+                </p>
+                <div class="w-24 h-1 bg-gold mx-auto mb-8"></div>
+                <h3 class="text-2xl md:text-3xl font-serif text-gold italic">"11 Tahun Berkarya"</h3>
+            </div>
+        </section>
+
+        <!-- Countdown Timer -->
+        <section class="py-16 bg-slate-900 border-y border-slate-800">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h3 class="text-2xl font-serif mb-8 text-gold">Menuju Hari Acara</h3>
+                <div id="timer" class="grid grid-cols-4 gap-2 md:gap-8">
+                    <div class="bg-navy-dark p-3 md:p-4 rounded-xl border border-slate-700">
+                        <span id="days" class="block text-2xl md:text-5xl font-bold text-white">00</span>
+                        <span class="text-[10px] md:text-xs uppercase text-slate-400 tracking-widest">Hari</span>
+                    </div>
+                    <div class="bg-navy-dark p-3 md:p-4 rounded-xl border border-slate-700">
+                        <span id="hours" class="block text-2xl md:text-5xl font-bold text-white">00</span>
+                        <span class="text-[10px] md:text-xs uppercase text-slate-400 tracking-widest">Jam</span>
+                    </div>
+                    <div class="bg-navy-dark p-3 md:p-4 rounded-xl border border-slate-700">
+                        <span id="minutes" class="block text-2xl md:text-5xl font-bold text-white">00</span>
+                        <span class="text-[10px] md:text-xs uppercase text-slate-400 tracking-widest">Menit</span>
+                    </div>
+                    <div class="bg-navy-dark p-3 md:p-4 rounded-xl border border-slate-700">
+                        <span id="seconds" class="block text-2xl md:text-5xl font-bold text-white">00</span>
+                        <span class="text-[10px] md:text-xs uppercase text-slate-400 tracking-widest">Detik</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details -->
+        <section class="py-24 px-6 relative bg-navy-dark overflow-hidden">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gold">Waktu & Lokasi</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-gold/10 p-3 rounded-lg">
+                                <i class="far fa-calendar-alt text-2xl text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold">Sabtu, 28 Maret 2026</h4>
+                                <p class="text-slate-400">Pukul 11.30 - 13.00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-gold/10 p-3 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-2xl text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold">A&M Co. Yogyakarta</h4>
+                                <p class="text-slate-400 text-sm md:text-base">Jl. Parangtritis No.139, Brontokusuman, Kec. Mergangsan, Kota Yogyakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <a href="https://www.google.com/maps/search/?api=1&query=A%26M+Co.+Jl.Parangtritis+No.139+Yogyakarta" target="_blank" class="inline-block bg-gold hover:bg-yellow-600 text-navy-dark font-bold px-8 py-3 rounded-full transition duration-300 shadow-xl text-sm">
+                            <i class="fas fa-directions mr-2"></i> Buka Google Maps
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="h-64 md:h-[450px] rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 fade-in">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.756122602758!2d110.36618437500557!3d-7.815610492204786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57bc85149301%3A0x6a2c270d4f55f94b!2sA%26M%20Co.%20Yogyakarta!5e0!3m2!1sid!2sid!4v1710500000000!5m2!1sid!2sid" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Racing Gallery -->
+        <section class="py-24 px-6 bg-slate-900">
+            <div class="max-w-6xl mx-auto text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gold mb-4">Galeri Tim Balap</h2>
+                <p class="text-slate-400">Momen ikonik perjalanan 11 tahun tim kami</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item relative aspect-video md:aspect-square lg:aspect-video rounded-xl overflow-hidden fade-in shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1wB026h8wxkOpgjd2DT3N1r_kzKKtX2mJ" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="gallery-item relative aspect-video md:aspect-square lg:aspect-video rounded-xl overflow-hidden fade-in shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1Y6viv3_U8Xa5PeaIA6fS-q2YzTHIG52p" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="gallery-item relative aspect-video md:aspect-square lg:aspect-video rounded-xl overflow-hidden fade-in shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1v8o7JnAtdHh41HDe_n3WyQ7Flac-X_8K" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="gallery-item relative aspect-video md:aspect-square lg:aspect-video rounded-xl overflow-hidden fade-in shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1GL658XKdY8djY6DbN0rTGe2vKI9w2QTV" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="gallery-item relative aspect-video md:aspect-square lg:aspect-video rounded-xl overflow-hidden fade-in shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1gwF-CJonJrA0t3irlKKKk9giI2fpBjpR" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="gallery-item relative aspect-video md:aspect-square lg:aspect-video rounded-xl overflow-hidden fade-in shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1HVQnUSEs4oruaktRWZtV4fi_m8Hs9pcS" class="w-full h-full object-cover object-center">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 bg-navy-dark text-center border-t border-slate-800">
+            <h3 class="font-serif text-gold text-xl md:text-2xl mb-4">ADITAMA RACING & SCM JREEZ RACING</h3>
+            <p class="text-slate-500 text-xs md:text-sm italic">"Spirit of Speed, Bond of Family"</p>
+            <div class="mt-8 text-slate-600 text-[10px] md:text-xs px-4">
+                © 2026 Exclusive Invitation. Designed with Pride.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Reveal elements on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, observerOptions);
+
+        function openInvitation() {
+            // Hide cover with animation
+            const cover = document.getElementById('invitation-cover');
+            cover.classList.add('cover-hidden');
+            
+            // Allow body scroll
+            document.body.classList.remove('overflow-hidden');
+            document.body.classList.add('overflow-x-hidden');
+            
+            // Show music control
+            document.getElementById('audio-control').classList.remove('hidden');
+
+            // Trigger hero animation manually after open
+            setTimeout(() => {
+                document.getElementById('hero-content').classList.add('appear');
+                document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+            }, 500);
+        }
+
+        // Countdown Timer
+        const targetDate = new Date("March 28, 2026 11:30:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if(document.getElementById("days")) {
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        // Audio Logic (Icon only, add <audio> tag if you have a source)
+        let isPlaying = false;
+        document.getElementById('audio-control').addEventListener('click', function() {
+            isPlaying = !isPlaying;
+            const icon = document.getElementById('music-icon');
+            icon.className = isPlaying ? 'fas fa-pause text-gold' : 'fas fa-music text-gold';
+        });
+    </script>
+</body>
+</html>
